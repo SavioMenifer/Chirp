@@ -47,6 +47,7 @@ namespace XRAccess.Chirp
         public float captionMoveDuration = 0.2f;
         public float captionGap = 0.02f;
         public int reservedSpaceLines = 2;
+        public bool showIndicatorArrows = true;
     }
 
     [Serializable]

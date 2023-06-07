@@ -485,7 +485,5 @@ MonoBehaviour:
   leftArrow: {fileID: 2787778136562675762}
   rightArrow: {fileID: 6007395814916236886}
   arrowGap: 30
-  setArrowColor: 0
-  arrowColor: {r: 0, g: 0, b: 0, a: 0}
   scaleFactor: 0.045
   audioSource: {fileID: 0}

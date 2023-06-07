@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 namespace XRAccess.Chirp
@@ -108,8 +107,7 @@ namespace XRAccess.Chirp
         {
             GameObject captionObject = Instantiate(captionCanvasPrefab);
 
-            Canvas canvas = captionObject.GetComponent<Canvas>();
-            canvas.transform.localScale = Vector3.one * _options.canvasScale;
+            captionObject.transform.localScale = Vector3.one * _options.canvasScale;
 
             // set layer names for caption object and its children
             int captionLayer = LayerMask.NameToLayer(_options.captionLayerName);
@@ -146,7 +144,12 @@ namespace XRAccess.Chirp
                 // implement later
             }
 
-            captionObject.GetComponentInChildren<IndicatorArrowsController>().audioSource = caption.audioSource;
+            if (_options.showIndicatorArrows == true)
+            {
+                var arrowsController = captionObject.GetComponentInChildren<IndicatorArrowsController>();
+                arrowsController.enabled = true;
+                arrowsController.audioSource = caption.audioSource;
+            }
         }
 
     }

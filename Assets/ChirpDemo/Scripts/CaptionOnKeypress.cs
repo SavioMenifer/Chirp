@@ -41,5 +41,10 @@ public class CaptionOnKeypress : MonoBehaviour
         {
             source2.ShowTimedCaption(text2, 5f);
         }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            var currentCaptions = CaptionRenderManager.Instance.currentCaptions;
+            CaptionRenderManager.Instance.currentRenderer.RefreshCaptions(currentCaptions);
+        }
     }
 }

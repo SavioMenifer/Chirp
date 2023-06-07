@@ -92,6 +92,7 @@ MonoBehaviour:
     captionMoveDuration: 0.2
     captionGap: 0.05
     reservedSpaceLines: 2
+    showIndicatorArrows: 1
 --- !u!114 &4418383557622562276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,4 +108,4 @@ MonoBehaviour:
   safeAreaVisualPrefab: {fileID: 3714435594692206541, guid: 8a6bd665e37031147bb3a62292b463c9, type: 3}
   safeAreaPercent: 40
   showSafeAreaVisual: 1
-  defaultDistance: 1.6
+  visualDistance: 1.6

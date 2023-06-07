@@ -62,7 +62,7 @@ namespace XRAccess.Chirp
 
         }
 
-        private void EnableRenderer(PositioningMode mode)
+        public void EnableRenderer(PositioningMode mode)
         {
             if (_currentRenderer != null) { Destroy(_currentRenderer); }
 
