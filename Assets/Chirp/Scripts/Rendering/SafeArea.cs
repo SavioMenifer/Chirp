@@ -7,7 +7,7 @@ namespace XRAccess.Chirp
         public GameObject safeAreaVisualPrefab;
         [Range(0f, 100f)] public float safeAreaPercent;
         public bool showSafeAreaVisual = false;
-        public float defaultDistance;
+        public float visualDistance;
 
         private Camera _mainCamera;
         private GameObject _safeAreaVisual;
@@ -17,7 +17,7 @@ namespace XRAccess.Chirp
             _mainCamera = CaptionSystem.Instance.mainCamera;
 
             _safeAreaVisual = Instantiate(safeAreaVisualPrefab, this.transform);
-            _safeAreaVisual.transform.localPosition = new Vector3(0f, 0f, defaultDistance);
+            _safeAreaVisual.transform.localPosition = new Vector3(0f, 0f, visualDistance);
             _safeAreaVisual.SetActive(false);
         }
 
@@ -26,8 +26,13 @@ namespace XRAccess.Chirp
             if (showSafeAreaVisual)
             {
                 if (!_safeAreaVisual.activeSelf) { _safeAreaVisual.SetActive(true); };
-                var SafeAreaSize = GetSize(_safeAreaVisual.transform.localPosition.z);
+                var SafeAreaSize = GetSize(visualDistance);
                 _safeAreaVisual.transform.localScale = new Vector3(SafeAreaSize.x, SafeAreaSize.y, 1f);
+                _safeAreaVisual.transform.localPosition = new Vector3(0f, 0f, visualDistance);
+            }
+            else
+            {
+                if (_safeAreaVisual.activeSelf) { _safeAreaVisual.SetActive(false); };
             }
         }
 
