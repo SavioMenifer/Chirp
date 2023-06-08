@@ -29,6 +29,7 @@ namespace XRAccess.Chirp
 
         [Header("Other Options")]
         public bool reducedMotion;
+        public float extendDuration;
     }
 
     [Serializable]

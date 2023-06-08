@@ -50,7 +50,9 @@ namespace XRAccess.Chirp
             _currentCaptions.Add((newID, caption));
             _currentRenderer.GetComponent<CaptionRenderer>().AddCaption(newID, caption);
 
-            StartCoroutine(RemoveAfterDuration(newID, caption.duration));
+            float extendedDuration = caption.duration + CaptionSystem.Instance.options.extendDuration;
+
+            StartCoroutine(RemoveAfterDuration(newID, extendedDuration));
         }
 
         private IEnumerator RemoveAfterDuration(uint captionID, float duration)
