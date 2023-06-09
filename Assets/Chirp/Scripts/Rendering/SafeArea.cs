@@ -5,7 +5,8 @@ namespace XRAccess.Chirp
     public class SafeArea : MonoBehaviour
     {
         public GameObject safeAreaVisualPrefab;
-        [Range(0f, 100f)] public float safeAreaPercent;
+        [Range(0f, 100f)] public float safeAreaXPercent;
+        [Range(0f, 100f)] public float safeAreaYPercent;
         public bool showSafeAreaVisual = false;
         public float visualDistance;
 
@@ -38,16 +39,18 @@ namespace XRAccess.Chirp
 
         public Vector2 GetSize(float distance)
         {
-            float height = 2.0f * distance * Mathf.Tan(_mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad) * (safeAreaPercent / 100f);
-            float width = height * _mainCamera.aspect;
+            Vector2 fov = GetAngles();
+
+            float width = 2.0f * distance * Mathf.Tan(fov.x * 0.5f * Mathf.Deg2Rad);
+            float height = 2.0f * distance * Mathf.Tan(fov.y * 0.5f * Mathf.Deg2Rad);
 
             return new Vector2(width, height);
         }
 
         public Vector2 GetAngles()
         {
-            float verticalAngle = _mainCamera.fieldOfView * (safeAreaPercent / 100f);
-            float horizontalAngle = Camera.VerticalToHorizontalFieldOfView(_mainCamera.fieldOfView, _mainCamera.aspect) * (safeAreaPercent / 100f);
+            float verticalAngle = _mainCamera.fieldOfView * (safeAreaYPercent / 100f);
+            float horizontalAngle = Camera.VerticalToHorizontalFieldOfView(_mainCamera.fieldOfView, _mainCamera.aspect) * (safeAreaXPercent / 100f);
 
             return new Vector2(horizontalAngle, verticalAngle);
         }

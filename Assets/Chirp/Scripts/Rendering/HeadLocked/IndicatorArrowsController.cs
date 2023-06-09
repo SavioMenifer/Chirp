@@ -12,6 +12,7 @@ namespace XRAccess.Chirp
 
         public AudioSource audioSource;
 
+        private Camera _mainCamera;
         private TMP_Text _TMPText;
         private Vector2 _safeAreaAngles;
 
@@ -33,6 +34,7 @@ namespace XRAccess.Chirp
         private void Start()
         {
             _safeAreaAngles = CaptionRenderManager.Instance.currentRenderer.GetComponent<SafeArea>().GetAngles();
+            _mainCamera = CaptionSystem.Instance.mainCamera;
         }
 
         private void Update()
@@ -40,7 +42,7 @@ namespace XRAccess.Chirp
             if (audioSource != null)
             {
                 Vector3 target = audioSource.transform.position;
-                Vector3 relativeTarget = transform.InverseTransformPoint(target);
+                Vector3 relativeTarget = _mainCamera.transform.InverseTransformPoint(target);
 
                 float angle = Mathf.Atan2(relativeTarget.x, relativeTarget.z) * Mathf.Rad2Deg;
 
