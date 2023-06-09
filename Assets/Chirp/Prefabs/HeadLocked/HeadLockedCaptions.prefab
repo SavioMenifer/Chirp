@@ -81,6 +81,7 @@ MonoBehaviour:
   _captionsContainer: {fileID: 25992676884911888}
   _options:
     lag: 0.3
+    xAxisTilt: 10
     defaultCaptionDistance: 1.6
     canvasScale: 0.003
     lockZRotation: 1
@@ -106,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   safeAreaVisualPrefab: {fileID: 3714435594692206541, guid: 8a6bd665e37031147bb3a62292b463c9, type: 3}
-  safeAreaPercent: 40
+  safeAreaXPercent: 50
+  safeAreaYPercent: 35
   showSafeAreaVisual: 1
   visualDistance: 1.6
