@@ -71,7 +71,7 @@ namespace XRAccess.Chirp
             }
 
             var lastCaptionObj = _renderer.captionObjectMap[captionCount - 1].Item2;
-            lastCaptionObj.transform.localPosition = new Vector3(0f, yOffset, _rendererOptions.defaultCaptionDistance);
+            lastCaptionObj.transform.localPosition = new Vector3(0f, yOffset, 0f);
 
             StartCoroutine(RepositionCaptions(_rendererOptions.repositionDelay));
         }

@@ -39,6 +39,7 @@ namespace XRAccess.Chirp
     public class HeadLockedOptions : RendererOptions
     {
         public float lag = 0.3f;
+        public float xAxisTilt = 0f;
         public float defaultCaptionDistance = 1.6f;
         public float canvasScale = 0.003f;
         public bool lockZRotation = true;

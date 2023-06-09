@@ -45,6 +45,9 @@ namespace XRAccess.Chirp
             captionsCamera.cullingMask = _options.layersOnTop;
             _mainCamera.cullingMask = ~_options.layersOnTop; // inverse of layermask
 
+            _captionsContainer.transform.localPosition = new Vector3(0f, 0f, _options.defaultCaptionDistance);
+            _captionsContainer.transform.localRotation = Quaternion.Euler(_options.xAxisTilt, 0f, 0f);
+
             _positioner = _captionsContainer.AddComponent<HeadLockedPositioner>();
         }
 
