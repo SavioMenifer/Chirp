@@ -10,6 +10,7 @@ namespace XRAccess.Chirp
 
         private Camera _mainCamera;
         [SerializeField] private GameObject _captionsContainer;
+        [SerializeField] private HeadLockedPositioner _positioner;
 
         [SerializeField] private HeadLockedOptions _options;
         public override RendererOptions options
@@ -23,8 +24,6 @@ namespace XRAccess.Chirp
         {
             get { return _captionObjectMap; }
         }
-
-        private HeadLockedPositioner _positioner;
 
         private void Awake()
         {
@@ -45,10 +44,12 @@ namespace XRAccess.Chirp
             captionsCamera.cullingMask = _options.layersOnTop;
             _mainCamera.cullingMask = ~_options.layersOnTop; // inverse of layermask
 
-            _captionsContainer.transform.localPosition = new Vector3(0f, 0f, _options.defaultCaptionDistance);
-            _captionsContainer.transform.localRotation = Quaternion.Euler(_options.xAxisTilt, 0f, 0f);
+            // init dependent scripts
+            _captionsContainer.GetComponent<HeadLockedPositioner>().Init();
+            GetComponent<SafeArea>().Init();
 
-            _positioner = _captionsContainer.AddComponent<HeadLockedPositioner>();
+            SetOptions();
+            RefreshCaptions(CaptionRenderManager.Instance.currentCaptions);
         }
 
         private void Update()
@@ -104,6 +105,8 @@ namespace XRAccess.Chirp
             {
                 AddCaption(captionID, caption);
             }
+
+            SetOptions();
         }
 
         private GameObject CreateCaptionObject()
@@ -131,8 +134,8 @@ namespace XRAccess.Chirp
             TMPText.font = options.fontAsset;
             TMPText.fontSize = options.fontSize;
             TMPText.color = options.fontColor;
-            TMPText.outlineWidth = options.OutlineWidth;
-            TMPText.outlineColor = options.OutlineColor;
+            TMPText.outlineWidth = options.outlineWidth;
+            TMPText.outlineColor = options.outlineColor;
             TMPText.alignment = TextAlignmentOptions.Top; // TODO: check caption type before setting this
 
             TMPText.GetComponent<RectTransform>().sizeDelta = new Vector2(400f, 0f); // TODO set text width here
@@ -153,6 +156,12 @@ namespace XRAccess.Chirp
                 arrowsController.enabled = true;
                 arrowsController.audioSource = caption.audioSource;
             }
+        }
+
+        private void SetOptions()
+        {
+            _captionsContainer.transform.localRotation = Quaternion.Euler(_options.xAxisTilt, 0f, 0f);
+            _captionsContainer.transform.localPosition = new Vector3(0f, 0f, _options.defaultCaptionDistance);
         }
 
     }

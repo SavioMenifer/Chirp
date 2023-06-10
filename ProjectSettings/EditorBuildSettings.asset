@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/ChirpSamples/Scenes/TestScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/ChirpSamples/ForestConversationDemo/ForestConversationDemo.unity
+    guid: 79dc5bf9288131044a41d6041c3f49c7
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 49c9767acce92a445ac502ffba60b3fa, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: ad8222311ca53be4db71f0e6a4e100cc, type: 2}

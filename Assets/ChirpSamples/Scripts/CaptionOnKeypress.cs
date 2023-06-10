@@ -43,8 +43,7 @@ public class CaptionOnKeypress : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            var currentCaptions = CaptionRenderManager.Instance.currentCaptions;
-            CaptionRenderManager.Instance.currentRenderer.RefreshCaptions(currentCaptions);
+            CaptionRenderManager.Instance.RefreshCaptions();
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.Playables;
 
 public class CaptionClip : PlayableAsset
 {
-    public Object captionFile;
+    public TextAsset captionFile;
 
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {

@@ -3456,7 +3456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2678033d001ffd4c89c94c8f0d64547, type: 3}
   m_Name: CaptionClip(Clone)
   m_EditorClassIdentifier: 
-  captionFile: {fileID: 102900000, guid: 1517f5764bc45c6478a5ba40f0074562, type: 3}
+  captionFile: {fileID: 4900000, guid: 027a5ec3c82174549a81a40865cdfd4d, type: 3}
 --- !u!114 &3267456635328278501
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3740,7 +3740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2678033d001ffd4c89c94c8f0d64547, type: 3}
   m_Name: CaptionClip
   m_EditorClassIdentifier: 
-  captionFile: {fileID: 102900000, guid: cc0b030440ea2e44cbd06bbc914f92bd, type: 3}
+  captionFile: {fileID: 4900000, guid: 3bfb4a82976097340a86457576da8a06, type: 3}
 --- !u!114 &5902909305645631616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3858,7 +3858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2678033d001ffd4c89c94c8f0d64547, type: 3}
   m_Name: CaptionClip(Clone)(Clone)
   m_EditorClassIdentifier: 
-  captionFile: {fileID: 102900000, guid: 9e09ebb7a91aa15489824b243630aace, type: 3}
+  captionFile: {fileID: 4900000, guid: 1583dd61492ca0d4fa361032bf6e90de, type: 3}
 --- !u!114 &7270594931276828713
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -10,20 +10,23 @@ public class TimelineControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (timeline.state == PlayState.Playing)
-            {
-                timeline.Stop();
-            }
-            else if (timeline.state == PlayState.Paused)
-            {
-                timeline.Play();
-            }
-
+            TogglePlayState();
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            var currentCaptions = CaptionRenderManager.Instance.currentCaptions;
-            CaptionRenderManager.Instance.currentRenderer.RefreshCaptions(currentCaptions);
+            CaptionRenderManager.Instance.RefreshCaptions();
+        }
+    }
+
+    public void TogglePlayState()
+    {
+        if (timeline.state == PlayState.Playing)
+        {
+            timeline.Stop();
+        }
+        else if (timeline.state == PlayState.Paused)
+        {
+            timeline.Play();
         }
     }
 }

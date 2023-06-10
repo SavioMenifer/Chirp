@@ -13,7 +13,7 @@ namespace XRAccess.Chirp
         private Camera _mainCamera;
         private GameObject _safeAreaVisual;
 
-        private void Start()
+        public void Init()
         {
             _mainCamera = CaptionSystem.Instance.mainCamera;
 

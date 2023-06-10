@@ -1,44 +1,23 @@
-using System;
-using System.IO;
-using System.Text;
 using System.Collections.Generic;
-using UnityEditor;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Playables;
 
-using SubtitlesParser.Classes;
-using SubtitlesParser.Classes.Parsers;
 using XRAccess.Chirp;
+using SimpleSRT;
 
 public class CaptionBehaviour : PlayableBehaviour
 {
-    public UnityEngine.Object captionFile;
+    public TextAsset captionFile;
 
-    private SubParser _parser;
-    private List<SubtitleItem> _captions;
+    private List<SubtitleBlock> _captions;
     private int _currentIndex = 0;
 
     public override void OnGraphStart(Playable playable)
     {
         if (captionFile != null)
         {
-            _parser = new SubParser();
-
-            string filePath = AssetDatabase.GetAssetPath(captionFile);
-            string fileName = Path.GetFileName(filePath);
-
-            using (var fileStream = File.OpenRead(filePath))
-            {
-                try
-                {
-                    var mostLikelyFormat = _parser.GetMostLikelyFormat(fileName);
-                    _captions = _parser.ParseStream(fileStream, Encoding.UTF8, mostLikelyFormat);
-                }
-                catch (Exception e)
-                {
-                    Debug.Log(e);
-                }
-            }
+            _captions = SRTParser.Load(captionFile);
         }
     }
 
@@ -53,11 +32,11 @@ public class CaptionBehaviour : PlayableBehaviour
 
         float currentTime = (float)playable.GetTime();
 
-        while (_currentIndex < _captions.Count && currentTime >= _captions[_currentIndex].StartTime / 1000f)
+        while (_currentIndex < _captions.Count && currentTime >= (float)_captions[_currentIndex].From)
         {
             var caption = _captions[_currentIndex];
-            float duration = (caption.EndTime - caption.StartTime) / 1000f;
-            source.ShowTimedCaption(string.Join("\n", caption.Lines), duration);
+            string removedLineBreaks = Regex.Replace(caption.Text, @"\r\n?|\n", " "); // temp for demo
+            source.ShowTimedCaption(removedLineBreaks, (float)caption.Length);
             _currentIndex++;
         }
     }

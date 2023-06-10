@@ -21,8 +21,8 @@ namespace XRAccess.Chirp
         public TMP_FontAsset fontAsset;
         public float fontSize;
         public Color fontColor;
-        public float OutlineWidth;
-        public Color OutlineColor;
+        public float outlineWidth;
+        public Color outlineColor;
 
         [Header("Background Options")]
         public Material backgroundMaterial;

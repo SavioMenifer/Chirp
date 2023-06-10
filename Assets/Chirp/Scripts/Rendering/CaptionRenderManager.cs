@@ -17,7 +17,7 @@ namespace XRAccess.Chirp
         private uint nextCaptionID = 0;
 
         private List<(uint, Caption)> _currentCaptions = new List<(uint, Caption)>();
-        private GameObject _currentRenderer;
+        private GameObject _currentRendererObj;
 
         public List<(uint, Caption)> currentCaptions
         {
@@ -26,7 +26,17 @@ namespace XRAccess.Chirp
 
         public CaptionRenderer currentRenderer
         {
-            get { return _currentRenderer.GetComponent<CaptionRenderer>(); }
+            get
+            {
+                if (_currentRendererObj != null)
+                {
+                    return _currentRendererObj.GetComponent<CaptionRenderer>();
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
 
         private void Awake()
@@ -44,11 +54,20 @@ namespace XRAccess.Chirp
             return nextCaptionID++;
         }
 
+        public void RefreshCaptions()
+        {
+            if (_currentRendererObj == null) { return; }
+
+            currentRenderer.RefreshCaptions(_currentCaptions);
+        }
+
         public void AddTimedCaption(TimedCaption caption)
         {
+            if (_currentRendererObj == null) { return; }
+
             uint newID = GenerateCaptionID();
             _currentCaptions.Add((newID, caption));
-            _currentRenderer.GetComponent<CaptionRenderer>().AddCaption(newID, caption);
+            currentRenderer.AddCaption(newID, caption);
 
             float extendedDuration = caption.duration + CaptionSystem.Instance.options.extendDuration;
 
@@ -59,25 +78,32 @@ namespace XRAccess.Chirp
         {
             yield return new WaitForSeconds(duration);
 
-            _currentRenderer.GetComponent<CaptionRenderer>().RemoveCaption(captionID);
+            if (currentRenderer != null) { currentRenderer.RemoveCaption(captionID); }
             _currentCaptions.RemoveAll(caption => caption.Item1 == captionID);
 
         }
 
         public void EnableRenderer(PositioningMode mode)
         {
-            if (_currentRenderer != null) { Destroy(_currentRenderer); }
+            DestroyCurrentRenderer();
 
             switch (mode)
             {
                 case PositioningMode.HeadLocked:
-                    _currentRenderer = Instantiate(HeadLockedPrefab, CaptionSystem.Instance.transform);
+                    _currentRendererObj = Instantiate(HeadLockedPrefab, CaptionSystem.Instance.transform);
                     break;
                 default:
                     break;
             }
+        }
 
-            _currentRenderer.GetComponent<CaptionRenderer>().RefreshCaptions(_currentCaptions);
+        public void DestroyCurrentRenderer()
+        {
+            if (_currentRendererObj != null)
+            {
+                Destroy(_currentRendererObj);
+                _currentRendererObj = null;
+            }
         }
     }
 }

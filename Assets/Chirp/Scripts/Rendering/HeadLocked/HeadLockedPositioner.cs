@@ -11,7 +11,7 @@ namespace XRAccess.Chirp
         private HeadLockedOptions _rendererOptions;
         private SafeArea _safeArea;
 
-        private void Start()
+        public void Init()
         {
             _mainCamera = CaptionSystem.Instance.mainCamera;
             _renderer = (HeadLockedRenderer)CaptionRenderManager.Instance.currentRenderer;
