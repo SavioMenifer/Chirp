@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.Rendering;
+//using UnityEngine.Rendering.Universal;
 using TMPro;
 
 namespace XRAccess.Chirp
@@ -34,15 +36,7 @@ namespace XRAccess.Chirp
         {
             _mainCamera = CaptionSystem.Instance.mainCamera;
 
-            GameObject captionsCameraObj = new GameObject("CaptionsCamera");
-            Camera captionsCamera = captionsCameraObj.AddComponent<Camera>();
-            captionsCameraObj.transform.SetParent(_mainCamera.transform, false);
-
-            captionsCamera.CopyFrom(_mainCamera);
-            captionsCamera.clearFlags = CameraClearFlags.Depth;
-            captionsCamera.depth = _mainCamera.depth + 1f;
-            captionsCamera.cullingMask = _options.layersOnTop;
-            _mainCamera.cullingMask = ~_options.layersOnTop; // inverse of layermask
+            InitCaptionCamera();
 
             // init dependent scripts
             _captionsContainer.GetComponent<HeadLockedPositioner>().Init();
@@ -135,6 +129,7 @@ namespace XRAccess.Chirp
             TMPText.fontSize = options.fontSize;
             TMPText.color = options.fontColor;
             TMPText.outlineWidth = options.outlineWidth;
+            TMPText.fontMaterial.SetFloat(ShaderUtilities.ID_FaceDilate, options.outlineWidth);
             TMPText.outlineColor = options.outlineColor;
             TMPText.alignment = TextAlignmentOptions.Top; // TODO: check caption type before setting this
 
@@ -150,7 +145,7 @@ namespace XRAccess.Chirp
                 // implement later
             }
 
-            if (_options.showIndicatorArrows == true)
+            if (_options.showIndicatorArrows == true && caption.audioSource.spatialBlend > 0f)
             {
                 var arrowsController = captionObject.GetComponentInChildren<IndicatorArrowsController>();
                 arrowsController.enabled = true;
@@ -162,6 +157,30 @@ namespace XRAccess.Chirp
         {
             _captionsContainer.transform.localRotation = Quaternion.Euler(_options.xAxisTilt, 0f, 0f);
             _captionsContainer.transform.localPosition = new Vector3(0f, 0f, _options.defaultCaptionDistance);
+        }
+
+        private void InitCaptionCamera()
+        {
+            GameObject captionCameraObj = new GameObject("CaptionCamera");
+            Camera captionCamera = captionCameraObj.AddComponent<Camera>();
+            captionCameraObj.transform.SetParent(_mainCamera.transform, false);
+
+            captionCamera.CopyFrom(_mainCamera);
+            captionCamera.clearFlags = CameraClearFlags.Depth;
+            captionCamera.depth = _mainCamera.depth + 1f;
+            captionCamera.cullingMask = _options.layersOnTop;
+            _mainCamera.cullingMask = ~_options.layersOnTop; // inverse of layermask
+
+            /*
+            if (GraphicsSettings.defaultRenderPipeline.name.Contains("UniversalRenderPipeline"))
+            {
+                var captionsCameraData = captionCamera.GetUniversalAdditionalCameraData();
+                var mainCameraData = _mainCamera.GetUniversalAdditionalCameraData();
+
+                captionsCameraData.renderType = CameraRenderType.Overlay;
+                mainCameraData.cameraStack.Add(captionCamera);
+            }
+            */
         }
 
     }
