@@ -40,4 +40,9 @@ public class CaptionBehaviour : PlayableBehaviour
             _currentIndex++;
         }
     }
+
+    public override void OnGraphStop(Playable playable)
+    {
+        CaptionRenderManager.Instance?.ClearCaptions(); //temp for demo
+    }
 }

@@ -220,75 +220,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 36060054}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &131550875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 131550877}
-  - component: {fileID: 131550876}
-  - component: {fileID: 131550878}
-  m_Layer: 0
-  m_Name: Chirp Captions
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &131550876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131550875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74eaed3e59170f24e9444e39f6765d9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 514423558}
-  mainAudioListener: {fileID: 514423557}
-  options:
-    positioningMode: 0
-    fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    fontSize: 18
-    fontColor: {r: 1, g: 1, b: 1, a: 1}
-    OutlineWidth: 0.15
-    OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    backgroundMaterial: {fileID: 2100000, guid: 1e28a4f7b89ac4a4ab63e6598c01fa65, type: 2}
-    reducedMotion: 0
---- !u!4 &131550877
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131550875}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &131550878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131550875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca468cd6d4549e946a79157ba45267f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HeadLockedPrefab: {fileID: 5368379627061554375, guid: 6a5b5106d3ef57c4cb0c03b737583ee7, type: 3}
 --- !u!1 &319342814
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,3 +2774,68 @@ Transform:
   m_Father: {fileID: 485970260}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &184142202507665669
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439320, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 184142202622439321, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 514423558}
+    - target: {fileID: 184142202622439321, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: mainAudioListener
+      value: 
+      objectReference: {fileID: 514423557}
+    - target: {fileID: 184142202622439326, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}
+      propertyPath: m_Name
+      value: Chirp Captions
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f55ff7d6715937488d7b299de2ddb39, type: 3}

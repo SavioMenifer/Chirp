@@ -21,6 +21,7 @@ public class UIControl : MonoBehaviour
 
     public TMP_InputField lagField;
     public Toggle arrowsToggle;
+    public Toggle reduceMotionToggle;
 
     public GameObject colorPickerUI;
     public ColorPicker colorPicker;
@@ -102,6 +103,12 @@ public class UIControl : MonoBehaviour
         RefreshCaptions();
     }
 
+    public void ToggleReduceMotion()
+    {
+        _options.reducedMotion = reduceMotionToggle.isOn;
+        RefreshCaptions();
+    }
+
     public void SetFontAsset()
     {
         _options.fontAsset = fonts[fontStyleDropdown.value];
@@ -110,6 +117,9 @@ public class UIControl : MonoBehaviour
 
     public void AddToFontSize(int value)
     {
+        if (_options.fontSize + value < 0)
+            return;
+
         _options.fontSize += value;
         fontSizeField.GetComponent<TMP_InputField>().text = _options.fontSize.ToString("0");
         RefreshCaptions();
@@ -117,6 +127,9 @@ public class UIControl : MonoBehaviour
 
     public void AddToOutlineWidth(float value)
     {
+        if (_options.outlineWidth + value < 0)
+            return;
+
         _options.outlineWidth += value;
         outlineWidthField.GetComponent<TMP_InputField>().text = _options.outlineWidth.ToString("F2");
         RefreshCaptions();
@@ -124,6 +137,9 @@ public class UIControl : MonoBehaviour
 
     public void AddToLag(float value)
     {
+        if (_rendererOptions.lag + value < 0)
+            return;
+
         _rendererOptions.lag += value;
         lagField.GetComponent<TMP_InputField>().text = _rendererOptions.lag.ToString("F2");
         RefreshCaptions();
@@ -161,6 +177,7 @@ public class UIControl : MonoBehaviour
 
         lagField.GetComponent<TMP_InputField>().text = _rendererOptions.lag.ToString("F2");
         arrowsToggle.GetComponent<Toggle>().isOn = _rendererOptions.showIndicatorArrows;
+        reduceMotionToggle.GetComponent<Toggle>().isOn = _options.reducedMotion;
 
         List<string> fontNames = new List<string>();
         foreach (TMP_FontAsset font in fonts)

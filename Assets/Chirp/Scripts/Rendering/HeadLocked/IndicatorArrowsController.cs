@@ -74,6 +74,7 @@ namespace XRAccess.Chirp
                 return;
             }
 
+            // TODO: support left aligned and right aligned text in the future
             var textSize = _TMPText.GetRenderedValues(true);
             float xOffset = (textSize.x / 2) + (arrowGap * _TMPText.fontSize * scaleFactor);
             float yOffset = textSize.y / 2;
