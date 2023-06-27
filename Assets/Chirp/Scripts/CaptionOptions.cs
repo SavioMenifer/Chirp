@@ -15,6 +15,8 @@ namespace XRAccess.Chirp
     [Serializable]
     public class CaptionOptions
     {
+        public bool enableCaptions;
+
         public PositioningMode positioningMode;
 
         [Header("Font Options")]

@@ -46,7 +46,10 @@ namespace XRAccess.Chirp
 
         private void Start()
         {
-            EnableRenderer(CaptionSystem.Instance.options.positioningMode);
+            if (CaptionSystem.Instance.options.enableCaptions)
+            {
+                EnableRenderer(CaptionSystem.Instance.options.positioningMode);
+            }
         }
 
         private uint GenerateCaptionID()
@@ -54,8 +57,20 @@ namespace XRAccess.Chirp
             return nextCaptionID++;
         }
 
+        public void ClearCaptions()
+        {
+            _currentCaptions.Clear();
+            RefreshCaptions();
+        }
+
         public void RefreshCaptions()
         {
+            if (CaptionSystem.Instance.options.enableCaptions == false)
+            {
+                DestroyCurrentRenderer();
+                return;
+            }
+
             if (_currentRendererObj == null) { return; }
 
             currentRenderer.RefreshCaptions(_currentCaptions);
