@@ -1,0 +1,22 @@
+{
+  "name": "org.xraccess.chirp",
+  "version": "0.1.0",
+  "displayName": "Chirp Captions",
+  "description": "Open-source caption system for extended reality (XR) projects developed in Unity",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6"
+  },
+  "keywords": [
+    "captions",
+    "subtitles",
+    "accessibility",
+    "vr"
+  ],
+  "author": {
+    "name": "XR Access",
+    "email": "info@xraccess.org",
+    "url": "https://xraccess.org"
+  }
+}

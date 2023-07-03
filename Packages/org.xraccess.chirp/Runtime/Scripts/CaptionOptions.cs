@@ -6,10 +6,7 @@ namespace XRAccess.Chirp
 {
     public enum PositioningMode
     {
-        HeadLocked,
-        FixedPosition,
-        Appear,
-        EvenlySpaced
+        HeadLocked
     }
 
     [Serializable]
@@ -52,11 +49,5 @@ namespace XRAccess.Chirp
         public float captionGap = 0.02f;
         public int reservedSpaceLines = 2;
         public bool showIndicatorArrows = true;
-    }
-
-    [Serializable]
-    public class EvenlySpacedOptions : RendererOptions
-    {
-        public int copies;
     }
 }

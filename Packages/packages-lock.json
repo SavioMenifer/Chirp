@@ -213,6 +213,14 @@
       },
       "url": "https://packages.unity.com"
     },
+    "org.xraccess.chirp": {
+      "version": "file:org.xraccess.chirp",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.textmeshpro": "3.0.6"
+      }
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,

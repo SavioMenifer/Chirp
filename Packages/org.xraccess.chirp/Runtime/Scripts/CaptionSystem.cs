@@ -16,6 +16,8 @@ namespace XRAccess.Chirp
 
         public CaptionOptions options;
 
+        public RendererOptions rendererOptions;
+
         private void Awake()
         {
             Instance = this;

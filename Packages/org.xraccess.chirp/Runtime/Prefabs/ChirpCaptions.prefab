@@ -48,8 +48,9 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   mainAudioListener: {fileID: 0}
   options:
+    enableCaptions: 1
     positioningMode: 0
-    fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    fontAsset: {fileID: 11400000, guid: 4bbb607364473b6428107436d480c78a, type: 2}
     fontSize: 18
     fontColor: {r: 1, g: 1, b: 1, a: 1}
     outlineWidth: 0
